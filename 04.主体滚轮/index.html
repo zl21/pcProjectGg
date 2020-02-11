@@ -136,43 +136,51 @@
 
             /*
             * 实现滚轮滚动触发的函数
+            * 事件防抖
             * */
+            var timeId = null;
             function scrollMove(event) {
-                //判断是往上滚动还是往下滚动
-                var tag = null;  //标记滚轮往上滚还是往下滚
-                if (event.wheelDelta) {  //chrome ie
-                    if (event.wheelDelta > 0) {
-                        tag = 'up';
-                    } else {
-                        tag = 'down';
+                //如果上次定时没有结束，清除
+                clearTimeout(timeId);
+                //延迟执行
+                timeId = setTimeout(function () {
+                    //判断是往上滚动还是往下滚动
+                    var tag = null;  //标记滚轮往上滚还是往下滚
+                    if (event.wheelDelta) {  //chrome ie
+                        if (event.wheelDelta > 0) {
+                            tag = 'up';
+                        } else {
+                            tag = 'down';
+                        }
+                    } else if (event.detail) { //firefox
+                        if (event.detail > 0) {
+                            tag = 'down';
+                        } else {
+                            tag = 'up';
+                        }
                     }
-                } else if (event.detail) { //firefox
-                    if (event.detail > 0) {
-                        tag = 'down';
-                    } else {
-                        tag = 'up';
+                    //根据滚动方向，实现相应的操作
+                    if (tag === 'up') {
+                        //索引-1
+                        currentIndex--;
+                        //判断索引范围
+                        if (currentIndex < 0) {
+                            currentIndex = 0;
+                        }
+                        //设置导航和页面
+                        setNav(currentIndex);
+                    } else if (tag === 'down') {
+                        //索引+1
+                        currentIndex++;
+                        //索引范围判断
+                        if (currentIndex > oPageItems.length - 1) {
+                            currentIndex = oPageItems.length - 1;
+                        }
+                        //设置导航和页面
+                        setNav(currentIndex);
                     }
-                }
-                //根据滚动方向，实现相应的操作
-                if (tag === 'up') {
-                    //索引-1
-                    currentIndex--;
-                    //判断索引范围
-                    if (currentIndex < 0) {
-                        currentIndex = 0;
-                    }
-                    //设置导航和页面
-                    setNav(currentIndex);
-                } else if (tag === 'down') {
-                    //索引+1
-                    currentIndex++;
-                    //索引范围判断
-                    if (currentIndex > oPageItems.length - 1) {
-                        currentIndex = oPageItems.length - 1;
-                    }
-                    //设置导航和页面
-                    setNav(currentIndex);
-                }
+                }, 300);
+
             }
 
             /**
