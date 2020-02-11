@@ -102,6 +102,7 @@
             var oMain = document.querySelector('#main');  //主体结构元素
             var oPageList = main.querySelector('.page-list');
             var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
+            var currentIndex = 0;
 
             //计算主体页面的高度和每一个屏幕的高度
             var pageHeight = window.innerHeight - oHeader.offsetHeight;
@@ -113,7 +114,7 @@
             });
 
             //初始化
-            setNav(0);
+            setNav(currentIndex);
             //1.刚进入页面就要改变箭头的位置 在主页的正下方.值的计算公式：房子的左边缘距离屏幕左边缘的距离  -  header左边缘距离屏幕左边缘的距离 + 箭头自身的一半（因为在样式中，我们移动了自身的一半） - （箭头宽度 - 房子宽度）/2
             // oArrow.style.left = oNavItems[index].getBoundingClientRect().left - oHeader.getBoundingClientRect().left + oArrow.offsetWidth / 2 - (oArrow.offsetWidth - oNavItems[index].offsetWidth)/2 + "px";
 
@@ -126,6 +127,53 @@
                     setNav(index)
                 });
             });
+
+            // 绑定滚轮事件
+            //chrome ie
+            document.addEventListener('mousewheel', scrollMove);
+            //firefox
+            document.addEventListener('DOMMouseScroll', scrollMove);
+
+            /*
+            * 实现滚轮滚动触发的函数
+            * */
+            function scrollMove(event) {
+                //判断是往上滚动还是往下滚动
+                var tag = null;  //标记滚轮往上滚还是往下滚
+                if (event.wheelDelta) {  //chrome ie
+                    if (event.wheelDelta > 0) {
+                        tag = 'up';
+                    } else {
+                        tag = 'down';
+                    }
+                } else if (event.detail) { //firefox
+                    if (event.detail > 0) {
+                        tag = 'down';
+                    } else {
+                        tag = 'up';
+                    }
+                }
+                //根据滚动方向，实现相应的操作
+                if (tag === 'up') {
+                    //索引-1
+                    currentIndex --;
+                    //判断索引范围
+                    if (currentIndex < 0) {
+                        currentIndex = 0;
+                    }
+                    //设置导航和页面
+                    setNav(currentIndex);
+                } else if (tag === 'down') {
+                    //索引+1
+                    currentIndex ++;
+                    //索引范围判断
+                    if (currentIndex > oPageItems.length - 1) {
+                        currentIndex = oPageItems.length - 1;
+                    }
+                    //设置导航和页面
+                    setNav(currentIndex);
+                }
+            }
 
             /**
              * 实现导航高亮 和 箭头位置
