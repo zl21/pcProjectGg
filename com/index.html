@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>PC</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 头部part -->
+        <header id="header">
+            <div class="header-container">
+                <h1 class="logo left">
+                    <a href="javascript:">
+                        <img src="img/logo.png" alt="logo">
+                        <!-- 图片要设置宽高，1避免还没加载进来时获取不到；2避免换图片时尺寸问题影响页面展示效果 -->
+                    </a>
+                </h1>
+                <nav class="header-nav right">
+                    <!-- ul设置alian-item = center -->
+                    <ul>
+                        <li>
+                            <!-- a标签作为点击效果，不设样式 -->
+                            <a href="javascript:">
+                                <!-- up一开始宽度为0，鼠标移入变为100% -->
+                                <div class="nav-item-actived"><img src="img/home_actived.png" alt="home_actived"></div>
+                                <div class="nav-item-default"><img src="img/home.png" alt="home"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">course</div>
+                                <div class="nav-item-default">course</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">works</div>
+                                <div class="nav-item-default">works</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">about</div>
+                                <div class="nav-item-default">about</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">team</div>
+                                <div class="nav-item-default">team</div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="arrow"></div>
+            </div>
+        </header>
+        <!-- 主体part -->
+        <!-- <main></main> 很多浏览器都不支持 -->
+        <div id="main">
+            <div class="page-list">
+                <!--第一屏-->
+                <div class="page-item home">
+                    <div class="page-content">home</div>
+                </div>
+
+                <!--第二屏-->
+                <div class="page-item course">
+                    <div class="page-content">course</div>
+                </div>
+
+                <!--第三屏-->
+                <div class="page-item works">
+                    <div class="page-content">
+                        <div class="works01">
+                            <h3 class="common-title">EINBLICK</h3>
+                            <h3 class="common-title">ERKENNTNIS</h3>
+                            <h3 class="common-title">ERGEBNIS</h3>
+                        </div>
+                        <div class="works02">
+                            <ul class="works-list">
+                                <li class="works-item">
+                                    <img src="img/worksimg1.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>一支梨花压海棠</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                                <li class="works-item">
+                                    <img src="img/worksimg2.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>二十三年弃置身</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                                <li class="works-item">
+                                    <img src="img/worksimg3.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>山重水复疑无路</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                                <li class="works-item">
+                                    <img src="img/worksimg4.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>四面边声连角起</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="works03">
+                            <div class="robot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--第四屏-->
+                <div class="page-item about">
+                    <div class="page-content">about</div>
+                </div>
+
+                <!--第五屏-->
+                <div class="page-item team">
+                    <div class="page-content">team</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            //获取相关元素
+            var oNavItems = document.querySelectorAll('.header-nav li'); //所有导航的集合
+            var oArrow = document.querySelector('#header .arrow');  //小箭头
+            var oHeader = document.querySelector('#header');
+            var oMain = document.querySelector('#main');  //主体结构元素
+            var oPageList = main.querySelector('.page-list');
+            var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
+            var currentIndex = 0;  //当前导航（页面）的索引
+
+            //计算主体页面的高度和每一个屏幕的高度
+            var pageHeight = window.innerHeight - oHeader.offsetHeight;
+
+            //调用setPageHeight()设置主体高度和每一个屏的高度
+            setPageHeight();
+
+            //初始化
+            setNav(currentIndex);
+            //1.刚进入页面就要改变箭头的位置 在主页的正下方.值的计算公式：房子的左边缘距离屏幕左边缘的距离  -  header左边缘距离屏幕左边缘的距离 + 箭头自身的一半（因为在样式中，我们移动了自身的一半） - （箭头宽度 - 房子宽度）/2
+            // oArrow.style.left = oNavItems[index].getBoundingClientRect().left - oHeader.getBoundingClientRect().left + oArrow.offsetWidth / 2 - (oArrow.offsetWidth - oNavItems[index].offsetWidth)/2 + "px";
+
+            // oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth/2 - oArrow.offsetWidth/2) + 'px';
+
+            // 给每个导航绑定单击事件
+            oNavItems.forEach(function (navItem, index) {
+                navItem.addEventListener('click', function () {
+                    //点击时调用setNav方法设置导航
+                    currentIndex = index;//设置索引标记
+                    setNav();
+                });
+            });
+
+            //视口大小发生改变，重新计算每一屏高度
+            window.addEventListener('resize', function () {
+                //重新计算pageHeight
+                pageHeight = window.innerHeight - oHeader.offsetHeight;
+                //重新设置main的高度和每一屏的高度
+                setPageHeight();
+                // 改变导航跳转
+                setNav(currentIndex);
+            });
+
+            // 绑定滚轮事件
+            //chrome ie
+            document.addEventListener('mousewheel', scrollMove);
+            //firefox
+            document.addEventListener('DOMMouseScroll', scrollMove);
+
+            /*
+            * 实现滚轮滚动触发的函数
+            * 事件防抖
+            * */
+            var timeId = null;
+            function scrollMove(event) {
+                //如果上次定时没有结束，清除
+                clearTimeout(timeId);
+                //延迟执行
+                timeId = setTimeout(function () {
+                    //判断是往上滚动还是往下滚动
+                    var tag = null;  //标记滚轮往上滚还是往下滚
+                    if (event.wheelDelta) {  //chrome ie
+                        if (event.wheelDelta > 0) {
+                            tag = 'up';
+                        } else {
+                            tag = 'down';
+                        }
+                    } else if (event.detail) { //firefox
+                        if (event.detail > 0) {
+                            tag = 'down';
+                        } else {
+                            tag = 'up';
+                        }
+                    }
+                    //根据滚动方向，实现相应的操作
+                    if (tag === 'up') {
+                        //索引-1
+                        currentIndex--;
+                        //判断索引范围
+                        if (currentIndex < 0) {
+                            currentIndex = 0;
+                        }
+                        //设置导航和页面
+                        setNav();
+                    } else if (tag === 'down') {
+                        //索引+1
+                        currentIndex++;
+                        //索引范围判断
+                        if (currentIndex > oPageItems.length - 1) {
+                            currentIndex = oPageItems.length - 1;
+                        }
+                        //设置导航和页面
+                        setNav();
+                    }
+                }, 300);
+            }
+
+
+
+            /**
+            * setPageHeight()方法,无参。实现响应缩放
+            */
+            function setPageHeight() {
+                oMain.style.height = pageHeight + 'px';
+                oPageItems.forEach(function (pageItem) {
+                    pageItem.style.height = pageHeight + 'px';
+                });
+            }
+
+
+            /**
+             * setNav()方法,无参。实现导航高亮 和 箭头位置
+             * @param index 要高亮的导航
+             * parameter:英 [pəˈræmɪtə(r)]   美 [pəˈræmɪtər]  n.决定因素 ; 规范 ; 范围
+             */
+            function setNav() {
+                //其他所有的导航失去高亮
+                oNavItems.forEach(function (item) {
+                    item.classList.remove('actived');
+                });
+                //当前点击的导航显示高亮
+                oNavItems[currentIndex].classList.add('actived');
+                //设置箭头的位置
+                oArrow.style.left = oNavItems[currentIndex].getBoundingClientRect().left + (oNavItems[currentIndex].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
+                console.log(oArrow.style.left);
+
+                //设置内容的位置
+                oPageList.style.top = -currentIndex * pageHeight + 'px';
+            }
+        })();
+    </script>
+</body>
+
+</html>
