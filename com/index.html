@@ -102,16 +102,13 @@
             var oMain = document.querySelector('#main');  //主体结构元素
             var oPageList = main.querySelector('.page-list');
             var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
-            var currentIndex = 0;
+            var currentIndex = 0;  //当前导航（页面）的索引
 
             //计算主体页面的高度和每一个屏幕的高度
             var pageHeight = window.innerHeight - oHeader.offsetHeight;
 
-            //设置主体高度和每一个屏的高度
-            oMain.style.height = pageHeight + 'px';
-            oPageItems.forEach(function (pageItem) {
-                pageItem.style.height = pageHeight + 'px';
-            });
+            //调用setPageHeight()设置主体高度和每一个屏的高度
+            setPageHeight();
 
             //初始化
             setNav(currentIndex);
@@ -124,8 +121,19 @@
             oNavItems.forEach(function (navItem, index) {
                 navItem.addEventListener('click', function () {
                     //点击时调用setNav方法设置导航
-                    setNav(index)
+                    currentIndex = index;//设置索引标记
+                    setNav();
                 });
+            });
+
+            //视口大小发生改变，重新计算每一屏高度
+            window.addEventListener('resize', function () {
+                //重新计算pageHeight
+                pageHeight = window.innerHeight - oHeader.offsetHeight;
+                //重新设置main的高度和每一屏的高度
+                setPageHeight();
+                // 改变导航跳转
+                setNav(currentIndex);
             });
 
             // 绑定滚轮事件
@@ -168,7 +176,7 @@
                             currentIndex = 0;
                         }
                         //设置导航和页面
-                        setNav(currentIndex);
+                        setNav();
                     } else if (tag === 'down') {
                         //索引+1
                         currentIndex++;
@@ -177,31 +185,42 @@
                             currentIndex = oPageItems.length - 1;
                         }
                         //设置导航和页面
-                        setNav(currentIndex);
+                        setNav();
                     }
                 }, 300);
-
             }
 
+
+
             /**
-             * 实现导航高亮 和 箭头位置
+            * setPageHeight()方法,无参。实现响应缩放
+            */
+            function setPageHeight() {
+                oMain.style.height = pageHeight + 'px';
+                oPageItems.forEach(function (pageItem) {
+                    pageItem.style.height = pageHeight + 'px';
+                });
+            }
+
+
+            /**
+             * setNav()方法,无参。实现导航高亮 和 箭头位置
              * @param index 要高亮的导航
              * parameter:英 [pəˈræmɪtə(r)]   美 [pəˈræmɪtər]  n.决定因素 ; 规范 ; 范围
              */
-            function setNav(index) {
+            function setNav() {
                 //其他所有的导航失去高亮
                 oNavItems.forEach(function (item) {
                     item.classList.remove('actived');
                 });
                 //当前点击的导航显示高亮
-                oNavItems[index].classList.add('actived');
+                oNavItems[currentIndex].classList.add('actived');
                 //设置箭头的位置
-                oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
+                oArrow.style.left = oNavItems[currentIndex].getBoundingClientRect().left + (oNavItems[currentIndex].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
                 console.log(oArrow.style.left);
 
                 //设置内容的位置
-                oPageList.style.top = -index * pageHeight + 'px';
-
+                oPageList.style.top = -currentIndex * pageHeight + 'px';
             }
         })();
     </script>
