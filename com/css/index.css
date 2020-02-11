@@ -17,14 +17,12 @@ table { border-collapse:collapse; }
 /*头部*/
 #header {
     height: 80px;
-    background: skyblue;
     position: relative;
 }
 .header-container {
     margin: 0 auto;
     width: 1100px;
     height: 80px;
-    background: pink;
 }
 .logo {
     margin-top: 15px;
@@ -59,14 +57,17 @@ table { border-collapse:collapse; }
 .header-nav li:hover .nav-item-actived {
     width: 100%;
 }
+.header-nav li.actived .nav-item-actived {
+    width: 100%;
+}
 .arrow {
     position: absolute;
     left: 50%;
     bottom: -11px;
-    transform: translateX(-50%);
     width: 21px;
     height: 11px;
     background: url(../img/arrow.png) no-repeat;
+    transition: left 1s;
 }
 
 /*主体内容*/
