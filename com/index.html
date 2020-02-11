@@ -26,7 +26,7 @@
                     <ul>
                         <li>
                             <!-- a标签作为点击效果，不设样式 -->
-                            <a href="">
+                            <a href="javascript:">
                                 <!-- up一开始宽度为0，鼠标移入变为100% -->
                                 <div class="nav-item-actived"><img src="img/home_actived.png" alt="home_actived"></div>
                                 <div class="nav-item-default"><img src="img/home.png" alt="home"></div>
@@ -34,8 +34,8 @@
                         </li>
                         <li>
                             <a href="javascript:">
-                                <div class="nav-item-actived">courses</div>
-                                <div class="nav-item-default">courses</div>
+                                <div class="nav-item-actived">course</div>
+                                <div class="nav-item-default">course</div>
                             </a>
                         </li>
                         <li>
@@ -94,12 +94,23 @@
     </div>
 
     <script>
-        // 头部交互
         (function () {
             //获取相关元素
             var oNavItems = document.querySelectorAll('.header-nav li'); //所有导航的集合
             var oArrow = document.querySelector('#header .arrow');  //小箭头
             var oHeader = document.querySelector('#header');
+            var oMain = document.querySelector('#main');  //主体结构元素
+            var oPageList = main.querySelector('.page-list');
+            var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
+
+            //计算主体页面的高度和每一个屏幕的高度
+            var pageHeight = window.innerHeight - oHeader.offsetHeight;
+
+            //设置主体高度和每一个屏的高度
+            oMain.style.height = pageHeight + 'px';
+            oPageItems.forEach(function (pageItem) {
+                pageItem.style.height = pageHeight + 'px';
+            });
 
             //初始化
             setNav(0);
@@ -132,12 +143,12 @@
                 oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
                 console.log(oArrow.style.left);
 
+                //设置内容的位置
+                oPageList.style.top = -index * pageHeight + 'px';
+
             }
         })();
     </script>
-
-
-
 </body>
 
 </html>
