@@ -67,6 +67,52 @@
 
         </div>
     </div>
+
+    <script>
+        // 头部交互
+        (function () {
+            //获取相关元素
+            var oNavItems = document.querySelectorAll('.header-nav li'); //所有导航的集合
+            var oArrow = document.querySelector('#header .arrow');  //小箭头
+            var oHeader = document.querySelector('#header');
+
+            //初始化
+            setNav(0);
+            //1.刚进入页面就要改变箭头的位置 在主页的正下方.值的计算公式：房子的左边缘距离屏幕左边缘的距离  -  header左边缘距离屏幕左边缘的距离 + 箭头自身的一半（因为在样式中，我们移动了自身的一半） - （箭头宽度 - 房子宽度）/2
+            // oArrow.style.left = oNavItems[index].getBoundingClientRect().left - oHeader.getBoundingClientRect().left + oArrow.offsetWidth / 2 - (oArrow.offsetWidth - oNavItems[index].offsetWidth)/2 + "px";
+
+            // oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth/2 - oArrow.offsetWidth/2) + 'px';
+
+            // 给每个导航绑定单击事件
+            oNavItems.forEach(function (navItem, index) {
+                navItem.addEventListener('click', function () {
+                    //点击时调用setNav方法设置导航
+                    setNav(index)
+                });
+            });
+
+            /**
+             * 实现导航高亮 和 箭头位置
+             * @param index 要高亮的导航
+             * parameter:英 [pəˈræmɪtə(r)]   美 [pəˈræmɪtər]  n.决定因素 ; 规范 ; 范围
+             */
+            function setNav(index) {
+                //其他所有的导航失去高亮
+                oNavItems.forEach(function (item) {
+                    item.classList.remove('actived');
+                });
+                //当前点击的导航显示高亮
+                oNavItems[index].classList.add('actived');
+                //设置箭头的位置
+                oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
+                console.log(oArrow.style.left);
+
+            }
+        })();
+    </script>
+
+
+
 </body>
 
 </html>
