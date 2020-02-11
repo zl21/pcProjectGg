@@ -109,6 +109,11 @@ table { border-collapse:collapse; }
     font-weight:bold;
     letter-spacing:-5px;
 }
+.common-text{
+    color:#fff;
+    line-height:1.5;
+    font-size:15px;
+}
     /*第一屏*/
 .home {
     background: url('../img/bg1.jpg') no-repeat center center/cover;
@@ -203,6 +208,85 @@ table { border-collapse:collapse; }
     /*第四屏*/
 .about {
     background: url('../img/bg4.jpg') no-repeat center center/cover;
+}
+.about01 {
+    margin: 50px 0 100px 50px;
+}
+.about02 {
+    margin-left: 50px;
+    width: 400px;
+}
+.about-item {
+    position: absolute;
+    z-index: 5;
+    width: 260px;
+    height: 200px;
+    border: 5px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+}
+.about-item:first-child {
+    left: 750px;
+    top: 50px;
+}
+.about-item:last-child {
+    left: 600px;
+    top: 290px;
+}
+.about-item img {
+    display: block;
+}
+.about-item-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.about-item-mask li {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+}
+.about-item-mask li img {
+    position: absolute;
+    transition: 1s;
+}
+.about-item-mask li:nth-child(1) img {
+    left: 0;
+    top: 0;
+}
+.about-item-mask li:nth-child(2) img {
+    right: 0;
+    top: 0;
+}
+.about-item-mask li:nth-child(3) img {
+    left: 0;
+    bottom: 0;
+}
+.about-item-mask li:nth-child(4) img {
+    right: 0;
+    bottom: 0;
+}
+.about-item:hover .about-item-mask li:nth-child(1) img {
+    top: 100%;
+}
+.about-item:hover .about-item-mask li:nth-child(2) img {
+    right: 100%;
+}
+.about-item:hover .about-item-mask li:nth-child(3) img {
+    left: 100%;
+}
+.about-item:hover .about-item-mask li:nth-child(4) img {
+    bottom: 100%;
+}
+.about-line {
+    position: absolute;
+    left: 50%;
+    width: 357px;
+    height: 998px;
+    background: url('../img/greenLine.png') no-repeat;
 }
     /*第五屏*/
 .team {

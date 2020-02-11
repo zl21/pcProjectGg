@@ -100,7 +100,6 @@ table { border-collapse:collapse; }
     margin: auto;
     width: 1100px;
     height: 520px;
-    background: #f90;
 }
 .common-title{
     color:#009ee0;
@@ -109,6 +108,23 @@ table { border-collapse:collapse; }
     font-weight:bold;
     letter-spacing:-5px;
 }
+.common-text{
+    color:#fff;
+    line-height:1.5;
+    font-size:15px;
+}
+.course-plus {
+    position: absolute;
+    top: -5px;
+    width: 9px;
+    height: 410px;
+    background: url('../img/plus_row.png') no-repeat;
+}
+.course-plus:nth-child(1){left: -6px;}
+.course-plus:nth-child(2){left: 114px;}
+.course-plus:nth-child(3){left: 234px;}
+.course-plus:nth-child(4){left: 354px;}
+.course-plus:nth-child(5){left: 474px;}
     /*第一屏*/
 .home {
     background: url('../img/bg1.jpg') no-repeat center center/cover;
@@ -118,6 +134,68 @@ table { border-collapse:collapse; }
 .course {
     background: url('../img/bg2.jpg') no-repeat center center/cover;
 }
+.course01 {
+    margin: 50px;
+}
+.course02 {
+    margin-left: 50px;
+    width: 400px;
+}
+.course03 {
+    position: absolute;
+    right: 50px;
+    top: 70px;
+    width: 480px;
+}
+.course-list {
+    transform-style: preserve-3d;
+}
+.course-item {
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 132px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+.course-item-inner {
+    position: relative;
+    width: 120px;
+    height: 132px;
+    transition: transform .5s;
+    transform-style: preserve-3d;
+}
+.course-item-front {
+    width: 120px;
+    height: 132px;
+    line-height: 132px;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+.course-item-front img {
+    display: block;
+    margin: 26px auto 0;
+    width: 80px;
+    height: 80px;
+}
+.course-item-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    line-height: 132px;
+    font-size: 20px;
+    background:#009ee0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+.course-item:hover .course-item-inner{
+    transform: rotateY(180deg);
+}
+
     /*第三屏*/
 .works {
     background: url('../img/bg3.jpg') no-repeat center center/cover;
@@ -203,6 +281,85 @@ table { border-collapse:collapse; }
     /*第四屏*/
 .about {
     background: url('../img/bg4.jpg') no-repeat center center/cover;
+}
+.about01 {
+    margin: 50px 0 100px 50px;
+}
+.about02 {
+    margin-left: 50px;
+    width: 400px;
+}
+.about-item {
+    position: absolute;
+    z-index: 5;
+    width: 260px;
+    height: 200px;
+    border: 5px solid rgba(255,255,255,0.5);
+    border-radius: 8px;
+}
+.about-item:first-child {
+    left: 750px;
+    top: 50px;
+}
+.about-item:last-child {
+    left: 600px;
+    top: 290px;
+}
+.about-item img {
+    display: block;
+}
+.about-item-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.about-item-mask li {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+}
+.about-item-mask li img {
+    position: absolute;
+    transition: 1s;
+}
+.about-item-mask li:nth-child(1) img {
+    left: 0;
+    top: 0;
+}
+.about-item-mask li:nth-child(2) img {
+    right: 0;
+    top: 0;
+}
+.about-item-mask li:nth-child(3) img {
+    left: 0;
+    bottom: 0;
+}
+.about-item-mask li:nth-child(4) img {
+    right: 0;
+    bottom: 0;
+}
+.about-item:hover .about-item-mask li:nth-child(1) img {
+    top: 100%;
+}
+.about-item:hover .about-item-mask li:nth-child(2) img {
+    right: 100%;
+}
+.about-item:hover .about-item-mask li:nth-child(3) img {
+    left: 100%;
+}
+.about-item:hover .about-item-mask li:nth-child(4) img {
+    bottom: 100%;
+}
+.about-line {
+    position: absolute;
+    left: 50%;
+    width: 357px;
+    height: 998px;
+    background: url('../img/greenLine.png') no-repeat;
 }
     /*第五屏*/
 .team {

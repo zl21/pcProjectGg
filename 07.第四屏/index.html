@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
-    <title>PC</title>
+    <title>第四屏</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -123,7 +123,37 @@
 
                 <!--第四屏-->
                 <div class="page-item about">
-                    <div class="page-content">about</div>
+                    <div class="page-content">
+                        <div class="about01">
+                            <h3 class="common-title">EINBLICK</h3>
+                            <h3 class="common-title">ERKENNTNIS</h3>
+                            <h3 class="common-title">ERGEBNIS</h3>
+                        </div>
+                        <div class="about02">
+                            <p class="common-text">Der bunte Medienmix ist die Faszination die uns antreibt und das, was man an uns schätzt. Von A bis Z und von vorne bis hinten nehmen wir Ihr Projekt unter unsere Fittiche und lassen es zu etwas Großartigem heranwachsen.</p>
+                        </div>
+                        <div class="about03">
+                            <div class="about-item">
+                                <img src="img/about2.jpg" alt="about">
+                                <ul class="about-item-mask">
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                </ul>
+                            </div>
+                            <div class="about-item">
+                                <img src="img/about4.jpg" alt="about">
+                                <ul class="about-item-mask">
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-line"></div>
                 </div>
 
                 <!--第五屏-->
@@ -143,13 +173,20 @@
             var oMain = document.querySelector('#main');  //主体结构元素
             var oPageList = main.querySelector('.page-list');
             var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
-            var currentIndex = 0;  //当前导航（页面）的索引
+            var currentIndex = 3;  //当前导航（页面）的索引
 
             //计算主体页面的高度和每一个屏幕的高度
             var pageHeight = window.innerHeight - oHeader.offsetHeight;
 
             //调用setPageHeight()设置主体高度和每一个屏的高度
             setPageHeight();
+            /*
+            //封装成setPageHeight()方法
+            oMain.style.height = pageHeight + 'px';
+            oPageItems.forEach(function (pageItem) {
+                pageItem.style.height = pageHeight + 'px';
+            }); 
+            */
 
             //初始化
             setNav(currentIndex);
@@ -236,9 +273,9 @@
             /**
             * setPageHeight()方法,无参。实现响应缩放
             */
-            function setPageHeight() {
+            function setPageHeight(){
                 oMain.style.height = pageHeight + 'px';
-                oPageItems.forEach(function (pageItem) {
+                oPageItems.forEach(function(pageItem){
                     pageItem.style.height = pageHeight + 'px';
                 });
             }
@@ -255,13 +292,17 @@
                     item.classList.remove('actived');
                 });
                 //当前点击的导航显示高亮
+                // oNavItems[index].classList.add('actived');
                 oNavItems[currentIndex].classList.add('actived');
                 //设置箭头的位置
+                // oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
                 oArrow.style.left = oNavItems[currentIndex].getBoundingClientRect().left + (oNavItems[currentIndex].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
                 console.log(oArrow.style.left);
 
                 //设置内容的位置
+                // oPageList.style.top = -index * pageHeight + 'px';
                 oPageList.style.top = -currentIndex * pageHeight + 'px';
+
             }
         })();
     </script>
