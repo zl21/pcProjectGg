@@ -129,6 +129,59 @@ table { border-collapse:collapse; }
 .home {
     background: url('../img/bg1.jpg') no-repeat center center/cover;
 }
+.play {
+    width: 1100px;
+    height: 520px;
+}
+.play-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1100px;
+    height: 520px;
+    text-align: center;
+    line-height: 520px;
+    font-size: 80px;
+    letter-spacing: -5px;
+    color: #fff;
+    visibility: hidden;
+}
+.play-item.actived {
+    visibility: visible;
+}
+.play-item:nth-child(1) {
+    background:#dc6c5f;
+}
+.play-item:nth-child(2) {
+    background:#95dc84;
+}
+.play-item:nth-child(3) {
+    background:#64b9d2;
+}
+.play-item:nth-child(4) {
+    background:#000000;
+}
+.icon-list {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+}
+.icon-item {
+    display: inline-block;
+    margin: 2px;
+    width: 20px;
+    height: 20px;
+    background:rgba(255,255,255,0.5);
+    border-radius: 50%;
+    box-shadow:0 0 4px rgba(25,25,25,0.8);
+}
+.icon-item.actived {
+    background: #fff;
+}
+
+
 
     /*第二屏*/
 .course {
