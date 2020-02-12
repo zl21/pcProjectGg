@@ -479,50 +479,81 @@
         // 第一屏的逻辑
         (function () {
             //获取相关元素
-            var playItems = document.querySelectorAll('.play-item');
-            var iconItems = document.querySelectorAll('.icon-item');
+            var oPlay = document.querySelector('.play');
+            var oPlayItems = document.querySelectorAll('.play-item');
+            var oIconItems = document.querySelectorAll('.icon-item');
             var currentIndex = 0;  //全局索引 标识当前索引
             var prevIndex = 0; //标识上一个索引
             var isAnimated = false;  //标识是否正在执行动画
+            var duration = 3000; //自动播放间隔
 
             //给每一个控制按钮 单击事件
-            iconItems.forEach(function(iconItem, index){
-               iconItem.addEventListener('click', function(){
-                   //判断是否正在执行动画
-                   if (isAnimated) {
-                       return;
-                   }
-                   //设置正在执行动画
-                   isAnimated = true;
-                   //当动画执行完毕，标记状态发生改变
-                   setTimeout(function () {
-                        isAnimated = false;
-                   }, 2000);
-
-                   currentIndex = index;  //修改全局索引
-                   //比较当前的索引和上一个索引
-                   if (currentIndex > prevIndex) {
-                        // 右边显示，左边隐藏
-                        playItems[currentIndex].className = 'play-item right-show';
-                        playItems[prevIndex].className = 'play-item left-hide';
-                        //把上一个索引修改
-                        prevIndex = currentIndex;
-                   } else if (currentIndex < prevIndex) {
-                       // 右边隐藏，左边显示
-                       playItems[currentIndex].className = 'play-item left-show';
-                       playItems[prevIndex].className = 'play-item right-hide';
-                       //把上一个索引修改
-                       prevIndex = currentIndex;
-                   }
-
-                   // 小图标切换
-                   iconItems.forEach(function(iconItem, index){
-                      iconItem.classList.remove('actived');
-                   });
-                   this.classList.add('actived');
-               });
+            oIconItems.forEach(function (iconItem, index) {
+                iconItem.addEventListener('click', function () {
+                    //判断是否正在执行动画
+                    if (isAnimated) {
+                        return;
+                    }
+                    currentIndex = index;  //修改全局索引
+                    setPlay();
+                });
             });
 
+            //自动播放
+            var intervalId = setInterval(runPlay, duration);
+
+            //鼠标悬停在元素上
+            oPlay.addEventListener('mouseenter', function () {
+                clearInterval(intervalId);
+            });
+            //鼠标离开之后就调用定时器intervalId让动画自动播放
+            oPlay.addEventListener('mouseleave', function () {
+                intervalId = setInterval(runPlay, duration);
+            });
+
+            //定时器函数
+            function runPlay() {
+                //索引 下一个
+                currentIndex++;
+                //判断范围
+                if (currentIndex > oPlayItems.length - 1) {
+                    currentIndex = 0;
+                }
+                //调用设置函数,保持从右边显示
+                setPlay(true);
+            }
+
+            //设置显示相应的轮播图
+            // 参数 isRightShow 标识是否一直从右边显示
+            function setPlay(isRightShow) {
+                //设置正在执行动画
+                isAnimated = true;
+                //当动画执行完毕，标记状态发生改变
+                setTimeout(function () {
+                    isAnimated = false;
+                }, 2000);
+
+                //比较当前的索引和上一个索引
+                if (currentIndex > prevIndex || isRightShow) {
+                    // 右边显示，左边隐藏
+                    oPlayItems[currentIndex].className = 'play-item right-show';
+                    oPlayItems[prevIndex].className = 'play-item left-hide';
+                    //把上一个索引修改
+                    prevIndex = currentIndex;
+                } else if (currentIndex < prevIndex) {
+                    // 右边隐藏，左边显示
+                    oPlayItems[currentIndex].className = 'play-item left-show';
+                    oPlayItems[prevIndex].className = 'play-item right-hide';
+                    //把上一个索引修改
+                    prevIndex = currentIndex;
+                }
+
+                // 小图标切换
+                oIconItems.forEach(function (iconItem, index) {
+                    iconItem.classList.remove('actived');
+                });
+                oIconItems[currentIndex].classList.add('actived');
+            }
         })();
     </script>
 </body>
