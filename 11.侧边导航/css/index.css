@@ -535,3 +535,20 @@ table { border-collapse:collapse; }
 .team-item:hover {
     opacity: 1;
 }
+
+/*侧边导航*/
+#slideNav {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+}
+.slide-item {
+    margin-top: 10px;
+    width: 15px;
+    height:15px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+.slide-item.actived {
+    background: #fff;
+}
