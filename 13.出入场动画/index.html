@@ -383,10 +383,128 @@
             var oPageList = main.querySelector('.page-list');
             var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
             var oSlideItems = document.querySelectorAll('#slideNav .slide-item');   //侧边栏导航li
-            var currentIndex = 4;  //当前导航（页面）的索引
+            var currentIndex = 0;  //当前导航（页面）的索引
+            var prevIndex = 0; //上一个导航（页面）的索引
 
             //计算主体页面的高度和每一个屏幕的高度
             var pageHeight = window.innerHeight - oHeader.offsetHeight;
+
+            // 定义数据 每一个页面的出入场动画
+            var animationData = [
+                // 第一屏
+                {
+                    //入场动画
+                    inAnimation: function(){
+                        //获取相关元素
+                        var playList = document.querySelector('.home .play-list');
+                        var iconList = document.querySelector('.home .icon-list');
+                        //设置进场时的位置
+                        playList.style.transform = 'translateY(0)';
+                        iconList.style.transform = 'translateY(0)';
+                    },
+                    //离场动画
+                    outAnimation: function(){
+                        //获取相关元素
+                        var playList = document.querySelector('.home .play-list');
+                        var iconList = document.querySelector('.home .icon-list');
+                        //设置离场时的位置
+                        playList.style.transform = 'translateY(-200px)';
+                        iconList.style.transform = 'translateY(200px)';
+                    }
+                },
+                // 第二屏
+                {
+                    //入场动画
+                    inAnimation: function(){
+                        //获取元素
+                        var plane1 = document.querySelector('.course .plane1');
+                        var plane2 = document.querySelector('.course .plane2');
+                        var plane3 = document.querySelector('.course .plane3');
+                        //定义进场时的位置
+                        plane1.style.transform = 'translate(0,0)';
+                        plane2.style.transform = 'translate(0,0)';
+                        plane3.style.transform = 'translate(0,0)';
+                    },
+                    //离场动画
+                    outAnimation: function(){
+                        //获取元素
+                        var plane1 = document.querySelector('.course .plane1');
+                        var plane2 = document.querySelector('.course .plane2');
+                        var plane3 = document.querySelector('.course .plane3');
+                        //定义离场位置
+                        plane1.style.transform = 'translate(-200px,-200px)';
+                        plane2.style.transform = 'translate(-200px,200px)';
+                        plane3.style.transform = 'translate(200px,-200px)';
+                    }
+                },
+                // 第三屏
+                {
+                    //入场动画
+                    inAnimation: function(){
+                        //获取相关元素
+                        var pencel1 = document.querySelector('.works .pencel1');
+                        var pencel2 = document.querySelector('.works .pencel2');
+                        var pencel3 = document.querySelector('.works .pencel3');
+                        //设置进场的位置
+                        pencel1.style.transform = 'translateY(0)';
+                        pencel2.style.transform = 'translateY(0)';
+                        pencel3.style.transform = 'translate(0)';
+                    },
+                    //离场动画
+                    outAnimation: function(){
+                        //获取相关元素
+                        var pencel1 = document.querySelector('.works .pencel1');
+                        var pencel2 = document.querySelector('.works .pencel2');
+                        var pencel3 = document.querySelector('.works .pencel3');
+                        //设置离场的位置
+                        pencel1.style.transform = 'translateY(-200px)';
+                        pencel2.style.transform = 'translateY(200px)';
+                        pencel3.style.transform = 'translate(200px, 200px)';
+                    }
+                },
+                // 第四屏
+                {
+                    //入场动画
+                    inAnimation: function(){
+                        //获取相关元素
+                        var aboutItem1 = document.querySelector('.about-item:first-child');
+                        var aboutItem2 = document.querySelector('.about-item:last-child');
+                        //设置进场时的位置
+                        aboutItem1.style.transform = 'rotate(0deg)';
+                        aboutItem2.style.transform = 'rotate(0deg)';
+                    },
+                    //离场动画
+                    outAnimation: function(){
+                        //获取相关元素
+                        var aboutItem1 = document.querySelector('.about-item:first-child');
+                        var aboutItem2 = document.querySelector('.about-item:last-child');
+                        //设置离场时的位置
+                        aboutItem1.style.transform = 'rotate(45deg)';
+                        aboutItem2.style.transform = 'rotate(-45deg)';
+                    }
+                },
+                // 第五屏
+                {
+                    //入场动画
+                    inAnimation: function(){
+                        //获取相关元素
+                        var team1 = document.querySelector('.team1');
+                        var team2 = document.querySelector('.team2');
+                        //设置进场时的位置
+                        team1.style.transform = 'translateX(0)';
+                        team2.style.transform = 'translateX(0)';
+                    },
+                    //离场动画
+                    outAnimation: function(){
+                        //获取相关元素
+                        var team1 = document.querySelector('.team1');
+                        var team2 = document.querySelector('.team2');
+                        //设置离场时的位置
+                        team1.style.transform = 'translateX(-200px)';
+                        team2.style.transform = 'translateX(200px)';
+                    }
+                },
+            ];
 
             //调用setPageHeight()设置主体高度和每一个屏的高度
             setPageHeight();
@@ -397,6 +515,10 @@
                 pageItem.style.height = pageHeight + 'px';
             }); 
             */
+            // 设置每一页面处于离场状态
+            animationData.forEach(function (item) {
+               item.outAnimation();
+            });
 
             //初始化
             setNav(currentIndex);
@@ -524,6 +646,14 @@
                 //设置内容的位置
                 // oPageList.style.top = -index * pageHeight + 'px';
                 oPageList.style.top = -currentIndex * pageHeight + 'px';
+
+                //上一个页面离场动画
+                animationData[prevIndex].outAnimation();
+                // 设置当前页面进场动画
+                animationData[currentIndex].inAnimation();
+
+                //重新设置上一个的索引
+                prevIndex = currentIndex;
             }
         })();
 
