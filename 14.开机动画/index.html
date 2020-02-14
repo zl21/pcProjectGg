@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
-    <title>出入场动画</title>
+    <title>开机动画</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <div class="wrapper">
+        <!-- 开机动画 -->
+        <div id="bootMask">
+            <div class="boot-mask-up"></div>
+            <div class="boot-mask-down"></div>
+            <div class="boot-mask-line"></div>
+        </div>
         <!-- 头部part -->
         <header id="header">
             <div class="header-container">
@@ -374,6 +380,54 @@
     </div>
 
     <script>
+        //开机动画
+        (function () {
+            //获取相关元素
+            var oBootMask = document.querySelector('#bootMask');
+            var oBootMaskDown = document.querySelector('#bootMask .boot-mask-down');
+            var oBootMaskUp = document.querySelector('#bootMask .boot-mask-up');
+            var oBootMaskLine = document.querySelector('#bootMask .boot-mask-line');
+
+            //定义所有的图片
+            var arr = ['bg1.jpg','bg2.jpg','bg3.jpg','bg4.jpg','bg5.jpg','about1.jpg','about2.jpg','about3.jpg','about4.jpg','worksimg1.jpg','worksimg2.jpg','worksimg3.jpg','worksimg4.jpg','team.png','greenLine.png'];
+            // 定义变量，计算下载成功图片的个数
+            var loaded = 0;
+            // 创建图片元素，加载图片
+            arr.forEach(function(item) {
+                //创建img元素
+                var imgNode = document.createElement('img');
+                //设置图地址
+                imgNode.src = 'img/'+item;
+                //监听事件 图片下载完毕
+                imgNode.addEventListener('load', function(){
+                    //下载数量 +1;
+                    loaded ++;
+                    //计算加载的比例
+                    var scale = loaded / arr.length;
+                    // 变化进度条的长度
+                    oBootMaskLine.style.width = scale * 100 + '%';
+                });
+            });
+
+            oBootMaskLine.addEventListener('transitionend', function(){
+                //如果加载完毕了
+                if (loaded >= arr.length) {
+                    //开门
+                    oBootMaskUp.style.height = '0';
+                    oBootMaskDown.style.height = '0';
+                    //删除进度条
+                    oBootMask.removeChild(oBootMaskLine);
+                }
+            });
+
+            //bootMaskDown 过渡结束
+            oBootMaskDown.addEventListener('transitionend', function(){
+                //删除bootMask
+                oBootMask.remove(); //删除自己，注意兼容性
+            });
+        })();
+
+        //头部交互、导航、页面切换
         (function () {
             //获取相关元素
             var oNavItems = document.querySelectorAll('.header-nav li'); //所有导航的集合
@@ -394,7 +448,7 @@
                 // 第一屏
                 {
                     //入场动画
-                    inAnimation: function(){
+                    inAnimation: function () {
                         //获取相关元素
                         var playList = document.querySelector('.home .play-list');
                         var iconList = document.querySelector('.home .icon-list');
@@ -403,7 +457,7 @@
                         iconList.style.transform = 'translateY(0)';
                     },
                     //离场动画
-                    outAnimation: function(){
+                    outAnimation: function () {
                         //获取相关元素
                         var playList = document.querySelector('.home .play-list');
                         var iconList = document.querySelector('.home .icon-list');
@@ -415,7 +469,7 @@
                 // 第二屏
                 {
                     //入场动画
-                    inAnimation: function(){
+                    inAnimation: function () {
                         //获取元素
                         var plane1 = document.querySelector('.course .plane1');
                         var plane2 = document.querySelector('.course .plane2');
@@ -426,7 +480,7 @@
                         plane3.style.transform = 'translate(0,0)';
                     },
                     //离场动画
-                    outAnimation: function(){
+                    outAnimation: function () {
                         //获取元素
                         var plane1 = document.querySelector('.course .plane1');
                         var plane2 = document.querySelector('.course .plane2');
@@ -440,7 +494,7 @@
                 // 第三屏
                 {
                     //入场动画
-                    inAnimation: function(){
+                    inAnimation: function () {
                         //获取相关元素
                         var pencel1 = document.querySelector('.works .pencel1');
                         var pencel2 = document.querySelector('.works .pencel2');
@@ -451,7 +505,7 @@
                         pencel3.style.transform = 'translate(0)';
                     },
                     //离场动画
-                    outAnimation: function(){
+                    outAnimation: function () {
                         //获取相关元素
                         var pencel1 = document.querySelector('.works .pencel1');
                         var pencel2 = document.querySelector('.works .pencel2');
@@ -465,7 +519,7 @@
                 // 第四屏
                 {
                     //入场动画
-                    inAnimation: function(){
+                    inAnimation: function () {
                         //获取相关元素
                         var aboutItem1 = document.querySelector('.about-item:first-child');
                         var aboutItem2 = document.querySelector('.about-item:last-child');
@@ -474,7 +528,7 @@
                         aboutItem2.style.transform = 'rotate(0deg)';
                     },
                     //离场动画
-                    outAnimation: function(){
+                    outAnimation: function () {
                         //获取相关元素
                         var aboutItem1 = document.querySelector('.about-item:first-child');
                         var aboutItem2 = document.querySelector('.about-item:last-child');
@@ -486,7 +540,7 @@
                 // 第五屏
                 {
                     //入场动画
-                    inAnimation: function(){
+                    inAnimation: function () {
                         //获取相关元素
                         var team1 = document.querySelector('.team1');
                         var team2 = document.querySelector('.team2');
@@ -495,7 +549,7 @@
                         team2.style.transform = 'translateX(0)';
                     },
                     //离场动画
-                    outAnimation: function(){
+                    outAnimation: function () {
                         //获取相关元素
                         var team1 = document.querySelector('.team1');
                         var team2 = document.querySelector('.team2');
@@ -517,7 +571,7 @@
             */
             // 设置每一页面处于离场状态
             animationData.forEach(function (item) {
-               item.outAnimation();
+                item.outAnimation();
             });
 
             //初始化
