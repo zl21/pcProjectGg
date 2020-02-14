@@ -601,6 +601,29 @@
                 oIconItems[currentIndex].classList.add('actived');
             }
         })();
+
+        //背景音乐
+        (function () {
+            //获取相关元素
+            var oBgMusic = document.querySelector('.bg-music');
+            var oAudio = oBgMusic.querySelector('audio');
+
+            // 绑定单击事件
+            oBgMusic.addEventListener('click', function(){
+                //判断当前是否正在播放
+                if (oAudio.paused) { //当前为暂停状态
+                    //播放音乐
+                    oAudio.play();
+                    //显示动态图片
+                    oBgMusic.classList.add('played');
+                } else { //播放
+                    //暂停播放
+                    oAudio.pause();
+                    //图片变换
+                    oBgMusic.classList.remove('played');
+                }
+            });
+        })();
     </script>
 </body>
 
