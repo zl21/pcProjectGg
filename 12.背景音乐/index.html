@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
-    <title>侧边导航</title>
+    <title>BGM</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -21,6 +21,9 @@
                         <!-- 图片要设置宽高，1避免还没加载进来时获取不到；2避免换图片时尺寸问题影响页面展示效果 -->
                     </a>
                 </h1>
+                <div class="bg-music">
+                    <audio src="img/audio.mp3"></audio>
+                </div>
                 <nav class="header-nav right">
                     <!-- ul设置alian-item = center -->
                     <ul>
@@ -499,7 +502,7 @@
              */
             function setNav() {
                 //其他所有的导航失去高亮
-                oNavItems.forEach(function (item,index) {
+                oNavItems.forEach(function (item, index) {
                     item.classList.remove('actived');
                     oSlideItems[index].classList.remove('actived');  //侧边栏导航
                 });
