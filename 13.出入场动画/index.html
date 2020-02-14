@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="renderer" content="webkit">
-    <title>BGM</title>
+    <title>出入场动画</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -240,10 +240,12 @@
                                             :rabbit
                                         </div>
                                     </div>
-
                                 </li>
                             </ul>
                         </div>
+                        <div class="plane1"></div>
+                        <div class="plane2"></div>
+                        <div class="plane3"></div>
                     </div>
                 </div>
 
@@ -290,6 +292,9 @@
                         <div class="works03">
                             <div class="robot"></div>
                         </div>
+                        <div class="pencel1"></div>
+                        <div class="pencel2"></div>
+                        <div class="pencel3"></div>
                     </div>
                 </div>
 
@@ -609,7 +614,7 @@
             var oAudio = oBgMusic.querySelector('audio');
 
             // 绑定单击事件
-            oBgMusic.addEventListener('click', function(){
+            oBgMusic.addEventListener('click', function () {
                 //判断当前是否正在播放
                 if (oAudio.paused) { //当前为暂停状态
                     //播放音乐
