@@ -14,6 +14,44 @@ table { border-collapse:collapse; }
 .clearfix:after {display:block; content:""; clear:both}
 .clearfix::after {display:block; content:""; clear:both}
 
+/*开机动画 遮罩*/
+#bootMask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+.boot-mask-up {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    background: #009ee0;
+    transition: height 1s;
+}
+.boot-mask-down {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: #009ee0;
+    transition: height 1s;
+}
+.boot-mask-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom:auto;
+    width: 0%;
+    height: 4px;
+    background: #fff;
+    transition: width .5s;
+}
+
 /*头部*/
 #header {
     height: 80px;
