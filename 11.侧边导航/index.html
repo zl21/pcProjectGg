@@ -374,6 +374,7 @@
             var oMain = document.querySelector('#main');  //主体结构元素
             var oPageList = main.querySelector('.page-list');
             var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
+            var oSlideItems = document.querySelectorAll('#slideNav .slide-item');   //侧边栏导航li
             var currentIndex = 4;  //当前导航（页面）的索引
 
             //计算主体页面的高度和每一个屏幕的高度
@@ -401,6 +402,15 @@
                 navItem.addEventListener('click', function () {
                     //点击时调用setNav方法设置导航
                     currentIndex = index;//设置索引标记
+                    setNav();
+                });
+            });
+
+            //给每个侧边栏导航 绑定单击事件
+            oSlideItems.forEach(function (slideItem, index) {
+                slideItem.addEventListener('click', function () {
+                    //设置导航
+                    currentIndex = index;
                     setNav();
                 });
             });
@@ -489,12 +499,15 @@
              */
             function setNav() {
                 //其他所有的导航失去高亮
-                oNavItems.forEach(function (item) {
+                oNavItems.forEach(function (item,index) {
                     item.classList.remove('actived');
+                    oSlideItems[index].classList.remove('actived');  //侧边栏导航
                 });
                 //当前点击的导航显示高亮
                 // oNavItems[index].classList.add('actived');
                 oNavItems[currentIndex].classList.add('actived');
+                //当前的侧边栏显示高亮
+                oSlideItems[currentIndex].classList.add('actived');
                 //设置箭头的位置
                 // oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
                 oArrow.style.left = oNavItems[currentIndex].getBoundingClientRect().left + (oNavItems[currentIndex].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
