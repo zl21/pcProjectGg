@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <title>侧边导航</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 头部part -->
+        <header id="header">
+            <div class="header-container">
+                <h1 class="logo left">
+                    <a href="javascript:">
+                        <img src="img/logo.png" alt="logo">
+                        <!-- 图片要设置宽高，1避免还没加载进来时获取不到；2避免换图片时尺寸问题影响页面展示效果 -->
+                    </a>
+                </h1>
+                <nav class="header-nav right">
+                    <!-- ul设置alian-item = center -->
+                    <ul>
+                        <li>
+                            <!-- a标签作为点击效果，不设样式 -->
+                            <a href="javascript:">
+                                <!-- up一开始宽度为0，鼠标移入变为100% -->
+                                <div class="nav-item-actived"><img src="img/home_actived.png" alt="home_actived"></div>
+                                <div class="nav-item-default"><img src="img/home.png" alt="home"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">course</div>
+                                <div class="nav-item-default">course</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">works</div>
+                                <div class="nav-item-default">works</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">about</div>
+                                <div class="nav-item-default">about</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:">
+                                <div class="nav-item-actived">team</div>
+                                <div class="nav-item-default">team</div>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="arrow"></div>
+            </div>
+        </header>
+        <!-- 主体part -->
+        <!-- <main></main> 很多浏览器都不支持 -->
+        <div id="main">
+            <div class="page-list">
+                <!--第一屏-->
+                <div class="page-item home">
+                    <div class="page-content">
+                        <div class="play">
+                            <ul class="play-list">
+                                <li class="play-item left-show actived"> One </li>
+                                <li class="play-item right-hide"> Two </li>
+                                <li class="play-item"> Three </li>
+                                <li class="play-item"> Four </li>
+                            </ul>
+                            <ul class="icon-list">
+                                <li class="icon-item actived"></li>
+                                <li class="icon-item"></li>
+                                <li class="icon-item"></li>
+                                <li class="icon-item"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--第二屏-->
+                <div class="page-item course">
+                    <div class="page-content">
+                        <div class="course01">
+                            <h3 class="common-title">EINIGE</h3>
+                            <h3 class="common-title">UNSERER</h3>
+                            <h3 class="common-title">KUNDEN</h3>
+                        </div>
+                        <div class="course02">
+                            <p class="common-text">Das Kundenvertrauen in unsere Kompetenz ist die notwendige Basis
+                                einer erfolgreichen Zusammenarbeit, gleichzeitig aber auch das größte Lob, das man uns
+                                entgegenbringen kann.</p>
+                            <p class="common-text">Diese und viele weitere große und kleine Kunden vertrauen uns seit
+                                Jahren, was uns stolz macht, und dafür sagen wir an dieser Stelle einfach mal.</p>
+                        </div>
+                        <div class="course03">
+                            <div class="course-plus"></div>
+                            <div class="course-plus"></div>
+                            <div class="course-plus"></div>
+                            <div class="course-plus"></div>
+                            <div class="course-plus"></div>
+                            <ul class="course-list">
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_1.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :cry
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_2.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :low
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_3.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :shy
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_4.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :run
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_5.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :drive
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_6.jpg" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :gun
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_7.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :small-fafa
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_8.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :dance
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_9.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :go
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_10.png" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :hhh~
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_11.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :sad
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li class="course-item">
+                                    <div class="course-item-inner">
+                                        <div class="course-item-front">
+                                            <img src="img/2_12.gif" alt="html5">
+                                        </div>
+                                        <div class="course-item-back">
+                                            :rabbit
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--第三屏-->
+                <div class="page-item works">
+                    <div class="page-content">
+                        <div class="works01">
+                            <h3 class="common-title">EINBLICK</h3>
+                            <h3 class="common-title">ERKENNTNIS</h3>
+                            <h3 class="common-title">ERGEBNIS</h3>
+                        </div>
+                        <div class="works02">
+                            <ul class="works-list">
+                                <li class="works-item">
+                                    <img src="img/worksimg1.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>一支梨花压海棠</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                                <li class="works-item">
+                                    <img src="img/worksimg2.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>二十三年弃置身</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                                <li class="works-item">
+                                    <img src="img/worksimg3.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>山重水复疑无路</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                                <li class="works-item">
+                                    <img src="img/worksimg4.jpg" alt="">
+                                    <div class="works-item-mask">
+                                        <p>四面边声连角起</p>
+                                        <span class="mask-icon"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="works03">
+                            <div class="robot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--第四屏-->
+                <div class="page-item about">
+                    <div class="page-content">
+                        <div class="about01">
+                            <h3 class="common-title">EINBLICK</h3>
+                            <h3 class="common-title">ERKENNTNIS</h3>
+                            <h3 class="common-title">ERGEBNIS</h3>
+                        </div>
+                        <div class="about02">
+                            <p class="common-text">Der bunte Medienmix ist die Faszination die uns antreibt und das, was
+                                man an uns schätzt. Von A bis Z und von vorne bis hinten nehmen wir Ihr Projekt unter
+                                unsere Fittiche und lassen es zu etwas Großartigem heranwachsen.</p>
+                        </div>
+                        <div class="about03">
+                            <div class="about-item">
+                                <img src="img/about2.jpg" alt="about">
+                                <ul class="about-item-mask">
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                    <li><img src="img/about1.jpg" alt="about1"></li>
+                                </ul>
+                            </div>
+                            <div class="about-item">
+                                <img src="img/about4.jpg" alt="about">
+                                <ul class="about-item-mask">
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                    <li><img src="img/about3.jpg" alt="about3"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-line"></div>
+                </div>
+
+                <!--第五屏-->
+                <div class="page-item team">
+                    <div class="page-content">
+                        <div class="team1">
+                            <h3 class="common-title">WIR SIND</h3>
+                            <h3 class="common-title">VOXELAIR</h3>
+                        </div>
+                        <div class="team2">
+                            <p class="common-text">Wir sind seit 2002 eine Full-Service-Werbeagentur mit Stammsitz in
+                                Heimsheim, zwischen Stuttgart und Karlsruhe.</p>
+                            <p class="common-text">Über 60 Jahre Erfahrung vereinen das gesamte VoxelAir-Team. Dabei hat
+                                jedes Voxel neben professionellem Allroundwissen auch sein ganz spezielles Gebiet, um
+                                selbst die individuellsten Kundenwünsche schnell und kompetent umzusetzen.</p>
+                        </div>
+                        <div class="team3">
+                            <ul class="team-list">
+                                <li class="team-item"></li>
+                                <li class="team-item"></li>
+                                <li class="team-item"></li>
+                                <li class="team-item"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--侧边导航-->
+        <nav id="slideNav">
+            <ul class="slide-list">
+                <li class="slide-item"></li>
+                <li class="slide-item"></li>
+                <li class="slide-item"></li>
+                <li class="slide-item"></li>
+                <li class="slide-item"></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        (function () {
+            //获取相关元素
+            var oNavItems = document.querySelectorAll('.header-nav li'); //所有导航的集合
+            var oArrow = document.querySelector('#header .arrow');  //小箭头
+            var oHeader = document.querySelector('#header');
+            var oMain = document.querySelector('#main');  //主体结构元素
+            var oPageList = main.querySelector('.page-list');
+            var oPageItems = main.querySelectorAll('.page-item');  //所有屏幕的集合
+            var oSlideItems = document.querySelectorAll('#slideNav .slide-item');   //侧边栏导航li
+            var currentIndex = 4;  //当前导航（页面）的索引
+
+            //计算主体页面的高度和每一个屏幕的高度
+            var pageHeight = window.innerHeight - oHeader.offsetHeight;
+
+            //调用setPageHeight()设置主体高度和每一个屏的高度
+            setPageHeight();
+            /*
+            //封装成setPageHeight()方法
+            oMain.style.height = pageHeight + 'px';
+            oPageItems.forEach(function (pageItem) {
+                pageItem.style.height = pageHeight + 'px';
+            }); 
+            */
+
+            //初始化
+            setNav(currentIndex);
+            //1.刚进入页面就要改变箭头的位置 在主页的正下方.值的计算公式：房子的左边缘距离屏幕左边缘的距离  -  header左边缘距离屏幕左边缘的距离 + 箭头自身的一半（因为在样式中，我们移动了自身的一半） - （箭头宽度 - 房子宽度）/2
+            // oArrow.style.left = oNavItems[index].getBoundingClientRect().left - oHeader.getBoundingClientRect().left + oArrow.offsetWidth / 2 - (oArrow.offsetWidth - oNavItems[index].offsetWidth)/2 + "px";
+
+            // oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth/2 - oArrow.offsetWidth/2) + 'px';
+
+            // 给每个导航绑定单击事件
+            oNavItems.forEach(function (navItem, index) {
+                navItem.addEventListener('click', function () {
+                    //点击时调用setNav方法设置导航
+                    currentIndex = index;//设置索引标记
+                    setNav();
+                });
+            });
+
+            //给每个侧边栏导航 绑定单击事件
+            oSlideItems.forEach(function (slideItem, index) {
+                slideItem.addEventListener('click', function () {
+                    //设置导航
+                    currentIndex = index;
+                    setNav();
+                });
+            });
+
+            //视口大小发生改变，重新计算每一屏高度
+            window.addEventListener('resize', function () {
+                //重新计算pageHeight
+                pageHeight = window.innerHeight - oHeader.offsetHeight;
+                //重新设置main的高度和每一屏的高度
+                setPageHeight();
+                // 改变导航跳转
+                setNav(currentIndex);
+            });
+
+            // 绑定滚轮事件
+            //chrome ie
+            document.addEventListener('mousewheel', scrollMove);
+            //firefox
+            document.addEventListener('DOMMouseScroll', scrollMove);
+
+            /*
+            * 实现滚轮滚动触发的函数
+            * 事件防抖
+            * */
+            var timeId = null;
+            function scrollMove(event) {
+                //如果上次定时没有结束，清除
+                clearTimeout(timeId);
+                //延迟执行
+                timeId = setTimeout(function () {
+                    //判断是往上滚动还是往下滚动
+                    var tag = null;  //标记滚轮往上滚还是往下滚
+                    if (event.wheelDelta) {  //chrome ie
+                        if (event.wheelDelta > 0) {
+                            tag = 'up';
+                        } else {
+                            tag = 'down';
+                        }
+                    } else if (event.detail) { //firefox
+                        if (event.detail > 0) {
+                            tag = 'down';
+                        } else {
+                            tag = 'up';
+                        }
+                    }
+                    //根据滚动方向，实现相应的操作
+                    if (tag === 'up') {
+                        //索引-1
+                        currentIndex--;
+                        //判断索引范围
+                        if (currentIndex < 0) {
+                            currentIndex = 0;
+                        }
+                        //设置导航和页面
+                        setNav();
+                    } else if (tag === 'down') {
+                        //索引+1
+                        currentIndex++;
+                        //索引范围判断
+                        if (currentIndex > oPageItems.length - 1) {
+                            currentIndex = oPageItems.length - 1;
+                        }
+                        //设置导航和页面
+                        setNav();
+                    }
+                }, 300);
+            }
+
+
+
+            /**
+            * setPageHeight()方法,无参。实现响应缩放
+            */
+            function setPageHeight() {
+                oMain.style.height = pageHeight + 'px';
+                oPageItems.forEach(function (pageItem) {
+                    pageItem.style.height = pageHeight + 'px';
+                });
+            }
+
+
+            /**
+             * setNav()方法,无参。实现导航高亮 和 箭头位置
+             * @param index 要高亮的导航
+             * parameter:英 [pəˈræmɪtə(r)]   美 [pəˈræmɪtər]  n.决定因素 ; 规范 ; 范围
+             */
+            function setNav() {
+                //其他所有的导航失去高亮
+                oNavItems.forEach(function (item,index) {
+                    item.classList.remove('actived');
+                    oSlideItems[index].classList.remove('actived');  //侧边栏导航
+                });
+                //当前点击的导航显示高亮
+                // oNavItems[index].classList.add('actived');
+                oNavItems[currentIndex].classList.add('actived');
+                //当前的侧边栏显示高亮
+                oSlideItems[currentIndex].classList.add('actived');
+                //设置箭头的位置
+                // oArrow.style.left = oNavItems[index].getBoundingClientRect().left + (oNavItems[index].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
+                oArrow.style.left = oNavItems[currentIndex].getBoundingClientRect().left + (oNavItems[currentIndex].offsetWidth / 2 - oArrow.offsetWidth / 2) + 'px';
+                console.log(oArrow.style.left);
+
+                //设置内容的位置
+                // oPageList.style.top = -index * pageHeight + 'px';
+                oPageList.style.top = -currentIndex * pageHeight + 'px';
+            }
+        })();
+
+        // 第一屏的逻辑
+        (function () {
+            //获取相关元素
+            var oPlay = document.querySelector('.play');
+            var oPlayItems = document.querySelectorAll('.play-item');
+            var oIconItems = document.querySelectorAll('.icon-item');
+            var currentIndex = 0;  //全局索引 标识当前索引
+            var prevIndex = 0; //标识上一个索引
+            var isAnimated = false;  //标识是否正在执行动画
+            var duration = 3000; //自动播放间隔
+
+            //给每一个控制按钮 单击事件
+            oIconItems.forEach(function (iconItem, index) {
+                iconItem.addEventListener('click', function () {
+                    //判断是否正在执行动画
+                    if (isAnimated) {
+                        return;
+                    }
+                    currentIndex = index;  //修改全局索引
+                    setPlay();
+                });
+            });
+
+            //自动播放
+            var intervalId = setInterval(runPlay, duration);
+
+            //鼠标悬停在元素上
+            oPlay.addEventListener('mouseenter', function () {
+                clearInterval(intervalId);
+            });
+            //鼠标离开之后就调用定时器intervalId让动画自动播放
+            oPlay.addEventListener('mouseleave', function () {
+                intervalId = setInterval(runPlay, duration);
+            });
+
+            //定时器函数
+            function runPlay() {
+                //索引 下一个
+                currentIndex++;
+                //判断范围
+                if (currentIndex > oPlayItems.length - 1) {
+                    currentIndex = 0;
+                }
+                //调用设置函数,保持从右边显示
+                setPlay(true);
+            }
+
+            //设置显示相应的轮播图
+            // 参数 isRightShow 标识是否一直从右边显示
+            function setPlay(isRightShow) {
+                //设置正在执行动画
+                isAnimated = true;
+                //当动画执行完毕，标记状态发生改变
+                setTimeout(function () {
+                    isAnimated = false;
+                }, 2000);
+
+                //比较当前的索引和上一个索引
+                if (currentIndex > prevIndex || isRightShow) {
+                    // 右边显示，左边隐藏
+                    oPlayItems[currentIndex].className = 'play-item right-show';
+                    oPlayItems[prevIndex].className = 'play-item left-hide';
+                    //把上一个索引修改
+                    prevIndex = currentIndex;
+                } else if (currentIndex < prevIndex) {
+                    // 右边隐藏，左边显示
+                    oPlayItems[currentIndex].className = 'play-item left-show';
+                    oPlayItems[prevIndex].className = 'play-item right-hide';
+                    //把上一个索引修改
+                    prevIndex = currentIndex;
+                }
+
+                // 小图标切换
+                oIconItems.forEach(function (iconItem, index) {
+                    iconItem.classList.remove('actived');
+                });
+                oIconItems[currentIndex].classList.add('actived');
+            }
+        })();
+    </script>
+</body>
+
+</html>
